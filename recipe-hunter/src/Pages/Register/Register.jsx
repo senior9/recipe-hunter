@@ -4,8 +4,18 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+
+    const handleRegister = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const userName = form.name.value;
+        const photoUrl = form.photo.value;
+        const email = form.email.value;
+        const password = form.passsword.value;
+        console.log(email, password,userName,photoUrl);
+    }
     return (
-        <Form className="container me-auto border w-50 p-5 mt-5">
+        <Form onSubmit={handleRegister} className="container me-auto border w-50 p-5 mt-5">
         <div className="">
           <div>
             <Form.Text><h1>Please Register</h1></Form.Text>

@@ -4,11 +4,13 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import bannerLogo from '../../assets/Logo/recipe-pilot-logo.png'
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
+import Banner from '../Banner/Banner';
 
 const Header = () => {
     return (
+        <>
         <Navbar bg="light" variant="light">
         <Container>
           <Link to='/'><img src={bannerLogo} alt="" /></Link>
@@ -20,6 +22,8 @@ const Header = () => {
           </Nav>
         </Container>
       </Navbar>
+      <Outlet></Outlet>
+        </>
     );
 };
 
