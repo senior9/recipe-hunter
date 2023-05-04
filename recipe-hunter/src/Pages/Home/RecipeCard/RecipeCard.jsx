@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/esm/ListGroupItem";
 import { Link } from "react-router-dom";
-import { MdFavoriteBorder } from "react-icons/md";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import Rating from 'react-rating';
+import { ToastContainer, toast } from "react-toastify";
 
 const RecipeCard = ({ recipe }) => {
   console.log(recipe);
   const {recipe_name,rating,cooking_method,ingredients  } = recipe;
   const firstFiveIngredients = ingredients.slice(0, 5);
+  const [isFavorited, setIsFavorited] = useState(false);
+
+
+//   Handle Favvourite 
+
+const handleFavoriteClick = () => {
+    setIsFavorited(true);
+    toast.success("Favorito Successfully", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
   return (
     <div  className="">
       <Card style={{ width: "18rem" }}>
@@ -40,7 +52,7 @@ const RecipeCard = ({ recipe }) => {
         <Card.Text className="d-flex justify-content-between align-items-center ">
             <div>
             <Rating
-            style={{fontSize:'1.5 rem'}}
+            style={{fontSize:'1.5rem'}}
           className="text-warning"
             placeholderRating={rating}
             emptySymbol={<FaRegStar />}
@@ -50,8 +62,16 @@ const RecipeCard = ({ recipe }) => {
           ></Rating>
             </div>
             <div>
-                <MdFavoriteBorder style={{fontSize:'1.5 rem'}}></MdFavoriteBorder>
-            </div>
+            {!isFavorited ? (
+              <MdFavoriteBorder
+                style={{ fontSize: "1.5rem", color: "#ccc" }}
+                onClick={handleFavoriteClick}
+              />
+            ) : (
+              <MdFavorite style={{ fontSize: "1.5rem", color: "red" }} />
+            )}
+            <ToastContainer />
+          </div>
         </Card.Text>
       </Card>
     </div>
