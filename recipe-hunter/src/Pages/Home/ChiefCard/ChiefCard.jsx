@@ -3,9 +3,10 @@ import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { Link } from "react-router-dom";
 
 const ChiefCard = (singleChief) => {
-  const { chefName, likes, numRecipes, pictureUrl, yearsOfExperience } =
+  const { id,chefName, likes, numRecipes, pictureUrl, yearsOfExperience } =
     singleChief.singleChief;
   return (
 
@@ -19,7 +20,7 @@ const ChiefCard = (singleChief) => {
         </Card.Text>
 
       </Card.Body>
-      <button className="btn btn-outline-warning text-danger fs-3 fw-bold">View Recipe</button>
+      <Link to={`/recipe/${id}`} ><button className="btn btn-outline-warning text-danger fs-3 fw-bold">View Recipe</button></Link>
     </Card>
   </Col>
 
