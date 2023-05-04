@@ -3,6 +3,7 @@ import Header from '../Shared/Header/Header';
 import Footer from '../Shared/Footer/Footer';
 import { Outlet } from 'react-router-dom';
 import Banner from '../Shared/Banner/Banner';
+import PopularCategory from '../Pages/Home/PopularCategory/PopularCategory';
 
 const Main = () => {
     return (
@@ -10,6 +11,7 @@ const Main = () => {
             <Header></Header>
           <Banner></Banner>
           <Outlet></Outlet>
+          <PopularCategory></PopularCategory>
             <Footer></Footer>
         </div>
     );

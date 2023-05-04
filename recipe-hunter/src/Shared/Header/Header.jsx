@@ -15,7 +15,7 @@ const Header = () => {
         <Container>
           <Link to='/home/chief'><img src={bannerLogo} alt="" /></Link>
           <Nav className="d-flex gap-5 ">
-            <Link className='text-decoration-none text-secondary ' to='/'>Home</Link>
+            <Link className='text-decoration-none text-secondary ' to='/home/chief'>Home</Link>
             <Link className='text-decoration-none text-secondary' to='/blog'>Blog</Link>
             <Link className='text-decoration-none text-secondary' to='/login'>Login</Link>
             <Image src="holder.js/171x180" roundedCircle />
