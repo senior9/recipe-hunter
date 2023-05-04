@@ -1,5 +1,6 @@
 import React from 'react';
 import BannerOner from "../../assets/Banner-1.png"
+import { Outlet } from 'react-router-dom';
 
 const Banner = () => {
     return (
@@ -12,6 +13,7 @@ const Banner = () => {
             <button type="button" className="btn btn-warning">See Details</button>
           </div>
         </div>
+{/* <Outlet></Outlet> */}
       </div>
       
 

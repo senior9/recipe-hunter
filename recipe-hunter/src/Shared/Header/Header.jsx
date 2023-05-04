@@ -13,7 +13,7 @@ const Header = () => {
         <>
         <Navbar bg="light" variant="light">
         <Container>
-          <Link to='/'><img src={bannerLogo} alt="" /></Link>
+          <Link to='/home/chief'><img src={bannerLogo} alt="" /></Link>
           <Nav className="d-flex gap-5 ">
             <Link className='text-decoration-none text-secondary ' to='/'>Home</Link>
             <Link className='text-decoration-none text-secondary' to='/blog'>Blog</Link>
@@ -22,7 +22,7 @@ const Header = () => {
           </Nav>
         </Container>
       </Navbar>
-      <Outlet></Outlet>
+      
         </>
     );
 };
