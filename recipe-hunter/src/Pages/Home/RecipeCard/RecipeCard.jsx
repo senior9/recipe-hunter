@@ -4,6 +4,8 @@ import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/esm/ListGroupItem";
 import { Link } from "react-router-dom";
 import { MdFavoriteBorder } from "react-icons/md";
+import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import Rating from 'react-rating';
 
 const RecipeCard = ({ recipe }) => {
   console.log(recipe);
@@ -35,12 +37,20 @@ const RecipeCard = ({ recipe }) => {
             <ListGroup.Item key={index}>{ingredient}</ListGroup.Item>
           ))}
         </ListGroup>
-        <Card.Text>
+        <Card.Text className="d-flex justify-content-between align-items-center ">
             <div>
-
+            <Rating
+            style={{fontSize:'1.5 rem'}}
+          className="text-warning"
+            placeholderRating={rating}
+            emptySymbol={<FaRegStar />}
+            placeholderSymbol={<FaStar />}
+            fullSymbol={<FaStar />}
+            readonly
+          ></Rating>
             </div>
             <div>
-                <MdFavoriteBorder></MdFavoriteBorder>
+                <MdFavoriteBorder style={{fontSize:'1.5 rem'}}></MdFavoriteBorder>
             </div>
         </Card.Text>
       </Card>
