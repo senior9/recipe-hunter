@@ -8,6 +8,7 @@ import Chief from '../Pages/Home/Chiefs/Chief';
 import ChiefLayout from '../Layout/ChiefLayout';
 import Recipe from '../Pages/Home/Recipe/Recipe';
 import RecipeLayout from '../Layout/RecipeLayout';
+import NotFound from '../Pages/Home/NotFound/NotFound';
 
 const Router = createBrowserRouter([
 
@@ -52,7 +53,12 @@ const Router = createBrowserRouter([
                 loader: ({params})=>fetch(`http://localhost:5000/recipe/${params.id}`)
             },
         ],
+    },
+    {
+        path: '*',
+        element: <NotFound></NotFound>,
     }
+
     
 
 ])
