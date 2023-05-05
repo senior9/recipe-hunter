@@ -20,7 +20,7 @@ const ChiefCard = (singleChief) => {
         </Card.Text>
 
       </Card.Body>
-      <Link to={`/recipe/${id}`} ><button className="btn btn-outline-warning text-danger fs-3 fw-bold">View Recipe</button></Link>
+      <Link to={`/recipe/${id}`} ><button className="btn btn-outline-warning w-100 text-danger fs-3 fw-bold">View Recipe</button></Link>
     </Card>
   </Col>
 

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <Form className="container me-auto border w-50 p-5 mt-5">
+    <Form className="container me-auto border  p-5 mt-5">
       <div className="">
         <div>
         <Form.Text><h1>Please Login</h1></Form.Text>
@@ -14,7 +14,7 @@ const Login = () => {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
-              className="w-50"
+              className=""
               type="email"
               name="email"
               placeholder="Enter email"
@@ -25,7 +25,7 @@ const Login = () => {
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
-              className="w-50"
+              className=""
               type="password"
               name="passsword"
               placeholder="Password"
@@ -47,7 +47,7 @@ const Login = () => {
             Submit
           </Button>
         </div>
-        <div className="d-flex flex-column  gap-3 mt-3">
+        <div className="d-flex   gap-3 mt-3">
           <button className="btn btn-outline-success py-2 w-50 d-flex align-items-center justify-content-center ">
             <FaGoogle
               style={{ fontSize: "1.5rem" }}
