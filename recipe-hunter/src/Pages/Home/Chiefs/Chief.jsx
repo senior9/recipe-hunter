@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useContext} from "react";
+import { authProvider } from "../../../Shared/Provider/UseProvider";
 import { useLoaderData } from "react-router-dom";
 import ChiefCard from "../ChiefCard/ChiefCard";
 import CardGroup from "react-bootstrap/CardGroup";
@@ -7,6 +8,7 @@ import "./Chief.css"
 
 const Chief = () => {
   const chiefData = useLoaderData();
+  const {loading} = useContext(authProvider)
   console.log(chiefData);
   return (
     <>

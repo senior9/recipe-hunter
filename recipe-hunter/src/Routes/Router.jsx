@@ -39,7 +39,7 @@ const Router = createBrowserRouter([
         {
             path:'chief',
             element: <Chief></Chief>,
-            loader: ()=>fetch("http://localhost:5000/chief")
+            loader: ()=>fetch("https://client-server-senior9.vercel.app/chief")
         },
 
        ]
@@ -51,7 +51,7 @@ const Router = createBrowserRouter([
             {
                 path:":id",
                 element:<Recipe></Recipe>,
-                loader: ({params})=>fetch(`http://localhost:5000/recipe/${params.id}`)
+                loader: ({params})=>fetch(`https://client-server-senior9.vercel.app/recipe/${params.id}`)
             },
         ],
     },

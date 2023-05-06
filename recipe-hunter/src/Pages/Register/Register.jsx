@@ -1,20 +1,38 @@
-import React from 'react';import Button from "react-bootstrap/Button";
+import React, { useContext,useState } from "react";
+import { authProvider } from "../../Shared/Provider/UseProvider";
+import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Register = () => {
-
-    const handleRegister = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const userName = form.name.value;
-        const photoUrl = form.photo.value;
-        const email = form.email.value;
-        const password = form.passsword.value;
-        console.log(email, password,userName,photoUrl);
+  const { crateUserInfo  } = useContext(authProvider);
+  const [error,setError] = useState('')
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.passsword.value;
+    const photoUrl = form.photo.value;
+    console.log(email, password,name,photoUrl);
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long");
+      return;
     }
+    crateUserInfo(email, password)
+      .then((result) => {
+        const createUser = result.user;
+        console.log(createUser);
+        form.reset();
+      })
+      .catch((error) => {
+        setError(error);
+        // ..
+      });
+  };
     return (
+        <>
         <Form onSubmit={handleRegister} className="container me-auto border  p-5 mt-5">
         <div className="">
           <div>
@@ -49,7 +67,7 @@ const Register = () => {
                 required
               />
             </Form.Group>
-  
+
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
@@ -60,6 +78,7 @@ const Register = () => {
                 required
               />
             </Form.Group>
+            <p className="text-danger">{error} </p>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Agree Terms & Conditions" />
             </Form.Group>
@@ -78,24 +97,26 @@ const Register = () => {
               Submit
             </Button>
           </div>
-          <div className="d-flex   gap-3 mt-3">
-            <button className="btn btn-outline-success py-2 w-50 d-flex align-items-center justify-content-center ">
-              <FaGoogle
-                style={{ fontSize: "1.5rem" }}
-                className="mx-3"
-              ></FaGoogle>{" "}
-              <span className="text-warning fs-3 fw-bold"> Google Login</span>
-            </button>
-            <button className="btn btn-outline-secondary py-2 w-50 d-flex align-items-center justify-content-center">
-              <FaGithub
-                style={{ fontSize: "1.5rem" }}
-                className="mx-3"
-              ></FaGithub>{" "}
-              <span className="text-primary fs-3 fw-bold"> Github Login</span>
-            </button>
-          </div>
         </div>
       </Form>
+      <div className="container me-auto border  p-5 mt-5">
+      <div className="d-flex   gap-3 mt-3">
+    <button className="btn btn-outline-success py-2 w-50 d-flex align-items-center justify-content-center ">
+      <FaGoogle
+        style={{ fontSize: "1.5rem" }}
+        className="mx-3"
+      ></FaGoogle>{" "}
+      <span className="text-warning fs-3 fw-bold"> Google Login</span>
+    </button>
+    <button className="btn btn-outline-secondary py-2 w-50 d-flex align-items-center justify-content-center">
+      <FaGithub
+        style={{ fontSize: "1.5rem" }}
+        className="mx-3"
+      ></FaGithub>{" "}
+      <span className="text-primary fs-3 fw-bold"> Github Login</span>
+    </button>
+  </div></div>
+        </>
     );
 };
 

@@ -1,18 +1,25 @@
-import React from "react";
+import React, { Suspense, useState } from "react";
+import { lazy } from "react";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { Link } from "react-router-dom";
 
+
+const LazyImage = lazy(() => import('../../../Shared/LazyImage/LazyImage'));
 const ChiefCard = (singleChief) => {
   const { id,chefName, likes, numRecipes, pictureUrl, yearsOfExperience } =
     singleChief.singleChief;
+    const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
 
     <Col xs={6} md={6}>
     <Card className="m-5">
-      <Card.Img variant="top" src={pictureUrl} />
+    <Suspense fallback={<div>Loading...</div>}>
+          <LazyImage src={pictureUrl} alt={chefName} />
+        </Suspense>
       <Card.Body>
         <Card.Title>{chefName}</Card.Title>
         <Card.Text>

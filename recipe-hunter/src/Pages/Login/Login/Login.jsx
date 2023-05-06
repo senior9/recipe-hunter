@@ -1,15 +1,44 @@
-import React from "react";
+import React, { useContext,useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { authProvider } from "../../../Shared/Provider/UseProvider";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 const Login = () => {
+  const {signIn} = useContext(authProvider);
+  const [error,setError] = useState(null) ;
+  const navigate =useNavigate();
+  const handleSignIn = (event) => {
+    event.preventDefault();
+    const form = event.target
+    const  email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+      signIn(email,password)
+    .then ((result)=>{
+        const createUser = result.user
+        console.log(createUser);
+        navigate('/home/chief')
+        form.reset();
+    })
+    .catch((error) => {
+        setError(error.message);
+        // ..
+      });
+     
+ }
+
+
+
+
   return (
-    <Form className="container me-auto border  p-5 mt-5">
+    <Form onSubmit={handleSignIn} className="container me-auto border  p-5 mt-5">
       <div className="">
         <div>
         <Form.Text><h1>Please Login</h1></Form.Text>
+        {error && <div className="alert alert-danger">{error}</div>}
+
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -27,7 +56,7 @@ const Login = () => {
             <Form.Control
               className=""
               type="password"
-              name="passsword"
+              name="password"
               placeholder="Password"
               required
             />
@@ -44,27 +73,12 @@ const Login = () => {
             </Form.Text>
           </Form.Group>
           <Button variant="primary" type="submit">
-            Submit
+          Submit
           </Button>
-        </div>
-        <div className="d-flex   gap-3 mt-3">
-          <button className="btn btn-outline-success py-2 w-50 d-flex align-items-center justify-content-center ">
-            <FaGoogle
-              style={{ fontSize: "1.5rem" }}
-              className="mx-3"
-            ></FaGoogle>{" "}
-            <span className="text-warning fs-3 fw-bold"> Google Login</span>
-          </button>
-          <button className="btn btn-outline-secondary py-2 w-50 d-flex align-items-center justify-content-center">
-            <FaGithub
-              style={{ fontSize: "1.5rem" }}
-              className="mx-3"
-            ></FaGithub>{" "}
-            <span className="text-primary fs-3 fw-bold"> Github Login</span>
-          </button>
         </div>
       </div>
     </Form>
+
   );
 };
 
