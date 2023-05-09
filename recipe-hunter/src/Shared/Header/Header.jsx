@@ -8,11 +8,13 @@ import { Link, Outlet } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import Banner from "../Banner/Banner";
 import { authProvider } from "../Provider/UseProvider";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
+
 
 
 const Header = () => {
-  const { user, logOut } = useContext(authProvider);
-  // console.log(logOut)
+  const { user, logOut,displayName,photoUrl } = useContext(authProvider);
+  console.log(photoUrl)
 
   // handleSign out
   const handleSignOut = () => {
@@ -20,6 +22,7 @@ const Header = () => {
       .then((result) => {})
       .catch((err) => console.log(err.message));
   };
+  const renderTooltip = () => <Tooltip id="tooltip">{displayName}</Tooltip>;
 
   return (
     <>
@@ -38,10 +41,14 @@ const Header = () => {
             <Link className="text-decoration-none text-secondary" to="/blog">
               Blog
             </Link>
+            {/* <Link className="text-decoration-none text-dark" to="/home/chief">
+              {user?.displayName}
+            </Link> */}
+              
 
             {user ? (
               <>
-                <span className="mx-5">{user.email}</span>
+                
                 <Link to="/login"
                   onClick={handleSignOut}
                   className="text-decoration-none text-secondary"
@@ -54,7 +61,18 @@ const Header = () => {
                 Login
               </Link>
             )}
-            <Image src="holder.js/171x180" roundedCircle />
+            {user && displayName && (
+              <OverlayTrigger placement="bottom" overlay={renderTooltip}>
+                <div className="d-flex align-items-center">
+                  <Image
+                    title={displayName}
+                    style={{ width: "40px", height: "40px" }}
+                    src={photoUrl}
+                    roundedCircle
+                  />
+                </div>
+              </OverlayTrigger>
+            )}
           </Nav>
         </Container>
       </Navbar>

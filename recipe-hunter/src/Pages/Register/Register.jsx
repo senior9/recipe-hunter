@@ -6,7 +6,7 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Register = () => {
-  const { crateUserInfo  } = useContext(authProvider);
+  const { crateUserInfo,updateProfileUser} = useContext(authProvider);
   const [error,setError] = useState('')
   const handleRegister = (event) => {
     event.preventDefault();
@@ -24,12 +24,20 @@ const Register = () => {
       .then((result) => {
         const createUser = result.user;
         console.log(createUser);
+
+        updateProfileUser(name,photoUrl)
+        .then(() => {
+         console.log(name,photoUrl)
+        }).catch((error) => {
+         setError(error.message);
+        });
         form.reset();
       })
       .catch((error) => {
-        setError(error);
+        setError(error.message);
         // ..
       });
+     
   };
     return (
         <>
