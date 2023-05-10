@@ -1,9 +1,12 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
@@ -31,6 +34,17 @@ const UserProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
    
   };
+  // Google SIgn in Method 
+
+  const googleSignInMethod = ()=>{
+    const googleProvider = new GoogleAuthProvider();
+    return signInWithPopup(auth, googleProvider);
+  }
+  // Github Sign in Method 
+  const gitHubSignInMethod = ()=>{
+    const gitProvider = new GithubAuthProvider();
+    return signInWithPopup(auth, gitProvider);
+  }
 
   //  SignOut from
   const logOut = () => {
@@ -39,18 +53,9 @@ const UserProvider = ({ children }) => {
    
   };
 
-  //update profile 
-  
-  // const updateProfileUser =(displayName, photoUrl)=>{
-  //  setLoading(false)
-  //  console.log(photoUrl)
-  //   return updateProfile(auth.currentUser,{displayName, photoUrl});
-    
-    
-  // }
 
 
-  const updateProfileUser = (displayName, photoUrl) => {
+  const updateProfileUser = async (displayName, photoUrl) => {
     setLoading(true);
     const currentUser = auth.currentUser;
     const promises = [];
@@ -60,12 +65,11 @@ const UserProvider = ({ children }) => {
     if (photoUrl) {
       promises.push(updateProfile(currentUser, { photoURL: photoUrl }));
     }
-    return Promise.all(promises).then(() => {
-      setUser(auth.currentUser);
-      setDisplayName(auth.currentUser.displayName);
-      setPhotoUrl(auth.currentUser.photoURL);
-      setLoading(false);
-    });
+    await Promise.all(promises);
+    setUser(auth.currentUser);
+    setDisplayName(auth.currentUser.displayName);
+    setPhotoUrl(auth.currentUser.photoURL);
+    setLoading(false);
   };
   
 
@@ -101,6 +105,9 @@ const UserProvider = ({ children }) => {
     error,
     photoUrl,
     displayName,
+    googleSignInMethod,
+    gitHubSignInMethod,
+    
   };
   return (
     <div>

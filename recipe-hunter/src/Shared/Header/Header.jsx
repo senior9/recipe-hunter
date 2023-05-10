@@ -9,12 +9,14 @@ import Image from "react-bootstrap/Image";
 import Banner from "../Banner/Banner";
 import { authProvider } from "../Provider/UseProvider";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { useState } from "react";
 
 
 
-const Header = () => {
+const Header = ({isActive}) => {
   const { user, logOut,displayName,photoUrl } = useContext(authProvider);
-  console.log(photoUrl)
+  console.log(photoUrl);
+  const [active, setActive] = useState(false);
 
   // handleSign out
   const handleSignOut = () => {
@@ -26,7 +28,7 @@ const Header = () => {
 
   return (
     <>
-      <Navbar bg="light" variant="light">
+      <Navbar   bg="light" variant="light">
         <Container>
           <Link to="/home/chief">
             <img src={bannerLogo} alt="" />
@@ -38,7 +40,7 @@ const Header = () => {
             >
               Home
             </Link>
-            <Link className="text-decoration-none text-secondary" to="/blog">
+            <Link style={{ color: isActive ? "green" : "blue" }} className="text-decoration-none text-secondary" to="/blog">
               Blog
             </Link>
             {/* <Link className="text-decoration-none text-dark" to="/home/chief">

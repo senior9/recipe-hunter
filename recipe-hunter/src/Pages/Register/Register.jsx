@@ -3,11 +3,12 @@ import { authProvider } from "../../Shared/Provider/UseProvider";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const { crateUserInfo,updateProfileUser} = useContext(authProvider);
-  const [error,setError] = useState('')
+  const { crateUserInfo,updateProfileUser,googleSignInMethod,gitHubSignInMethod} = useContext(authProvider);
+  const [error,setError] = useState('');
+  const navigate = useNavigate();
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -27,7 +28,8 @@ const Register = () => {
 
         updateProfileUser(name,photoUrl)
         .then(() => {
-         console.log(name,photoUrl)
+         console.log(name,photoUrl);
+         navigate('/home/chief')
         }).catch((error) => {
          setError(error.message);
         });
@@ -37,6 +39,30 @@ const Register = () => {
         setError(error.message);
         // ..
       });
+
+
+
+}
+
+// Google 
+const googleSignIn = ()=>{
+  googleSignInMethod()
+  .then(()=>{
+    navigate('/home/chief')
+  })
+  .catch((error) => {
+    setError(error.message);
+   });
+  }
+// Github  
+const gitHubSignIn = ()=>{
+  gitHubSignInMethod()
+  .then(()=>{
+    navigate('/home/chief')
+  })
+  .catch((error) => {
+    setError(error.message);
+   });
      
   };
     return (
@@ -114,14 +140,15 @@ const Register = () => {
         style={{ fontSize: "1.5rem" }}
         className="mx-3"
       ></FaGoogle>{" "}
-      <span className="text-warning fs-3 fw-bold"> Google Login</span>
+      <span onClick={googleSignIn} className="text-warning fs-3 fw-bold"> Google Login</span>
     </button>
+    
     <button className="btn btn-outline-secondary py-2 w-50 d-flex align-items-center justify-content-center">
       <FaGithub
         style={{ fontSize: "1.5rem" }}
         className="mx-3"
       ></FaGithub>{" "}
-      <span className="text-primary fs-3 fw-bold"> Github Login</span>
+      <span onClick={gitHubSignIn} className="text-primary fs-3 fw-bold"> Github Login</span>
     </button>
   </div></div>
         </>

@@ -5,11 +5,23 @@ import ChiefCard from "../ChiefCard/ChiefCard";
 import CardGroup from "react-bootstrap/CardGroup";
 import Row from "react-bootstrap/Row";
 import "./Chief.css"
+import { Spinner } from "react-bootstrap";
 
 const Chief = () => {
   const chiefData = useLoaderData();
   const {loading} = useContext(authProvider)
   console.log(chiefData);
+
+
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center mt-5">
+        <Spinner animation="border" variant="danger" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    );
+  }
   return (
     <>
         <div className="bg-light mt-5 marquee">
