@@ -10,6 +10,7 @@ import Recipe from '../Pages/Home/Recipe/Recipe';
 import RecipeLayout from '../Layout/RecipeLayout';
 import NotFound from '../Pages/Home/NotFound/NotFound';
 import Blog from '../Pages/Blog/Blog';
+import PrivateRoute from '../Shared/Private/PrivateRoute/PrivateRoute';
 
 const Router = createBrowserRouter([
 
@@ -50,7 +51,7 @@ const Router = createBrowserRouter([
         children:[
             {
                 path:":id",
-                element:<Recipe></Recipe>,
+                element:<PrivateRoute><Recipe></Recipe></PrivateRoute>,
                 loader: ({params})=>fetch(`https://client-server-senior9.vercel.app/recipe/${params.id}`)
             },
         ],

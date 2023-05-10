@@ -1,5 +1,5 @@
 import React, { useContext,useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authProvider } from "../../../Shared/Provider/UseProvider";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -9,6 +9,11 @@ const Login = () => {
   const {signIn} = useContext(authProvider);
   const [error,setError] = useState(null) ;
   const navigate =useNavigate();
+  let location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
+  console.log(from);
+  console.log(location.state)
   const handleSignIn = (event) => {
     event.preventDefault();
     const form = event.target
@@ -19,7 +24,7 @@ const Login = () => {
     .then ((result)=>{
         const createUser = result.user
         console.log(createUser);
-        navigate('/home/chief')
+        navigate(from, { replace: true });
         form.reset();
     })
     .catch((error) => {

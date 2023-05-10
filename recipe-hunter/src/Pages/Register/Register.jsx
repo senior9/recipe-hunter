@@ -3,12 +3,18 @@ import { authProvider } from "../../Shared/Provider/UseProvider";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { crateUserInfo,updateProfileUser,googleSignInMethod,gitHubSignInMethod} = useContext(authProvider);
   const [error,setError] = useState('');
   const navigate = useNavigate();
+  let location = useLocation();
+
+
+  let from = location.state?.from?.pathname || "/";
+  console.log(from);
+
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -29,10 +35,11 @@ const Register = () => {
         updateProfileUser(name,photoUrl)
         .then(() => {
          console.log(name,photoUrl);
-         navigate('/home/chief')
+         navigate(from, { replace: true })
         }).catch((error) => {
          setError(error.message);
         });
+
         form.reset();
       })
       .catch((error) => {

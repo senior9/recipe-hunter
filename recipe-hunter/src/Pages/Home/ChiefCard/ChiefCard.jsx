@@ -5,6 +5,7 @@ import CardGroup from "react-bootstrap/CardGroup";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { Link } from "react-router-dom";
+import "./ChiefCard.css"
 
 
 const LazyImage = lazy(() => import('../../../Shared/LazyImage/LazyImage'));
@@ -15,10 +16,10 @@ const ChiefCard = (singleChief) => {
 
   return (
 
-    <Col xs={6} md={6}>
-    <Card className="m-5">
+    <Col xs={6}  md={6} className=" d-flex   m-5  " >
+    <Card className="m-5 w-100 ">
     <Suspense fallback={<div>Loading...</div>}>
-          <LazyImage src={pictureUrl} alt={chefName} />
+          <LazyImage className=" w-100" src={pictureUrl} alt={chefName} />
         </Suspense>
       <Card.Body>
         <Card.Title>{chefName}</Card.Title>
