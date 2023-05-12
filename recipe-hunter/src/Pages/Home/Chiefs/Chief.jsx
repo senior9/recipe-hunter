@@ -28,9 +28,9 @@ const Chief = () => {
         <marquee direction="left">The World Class Chiefs are here !!!! </marquee>
 
         </div>
-      <div className="container d-flex gap-5  mt-5">
+      <div className="container  gap-5  mt-5">
         <Row>
-          <CardGroup>
+          <CardGroup className=" card-item ">
             {chiefData.map((singleChief) => (
               <ChiefCard key={singleChief.id} singleChief={singleChief} />
             ))}

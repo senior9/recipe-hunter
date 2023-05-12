@@ -2,6 +2,7 @@
     display: flex;
     overflow: hidden; /* hide any content that overflows the container */
   }
+
   
   .box {
     flex: 0 0 25%;
@@ -47,52 +48,17 @@
     animation-delay: 0s;
   }
  
-  
-  /* @keyframes slide {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
+  @media only screen and (max-width: 768px) {
+     .category{
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
   }
-
-  @keyframes slide {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  } */
-  /* @keyframes slide {
-    0% {
-      transform: translateX(0);
-    }
-    20% {
-      transform: translateX(0);
-    }
-    25% {
-      transform: translateX(-25%);
-    }
-    45% {
-      transform: translateX(-25%);
-    }
-    50% {
-      transform: translateX(-50%);
-    }
-    70% {
-      transform: translateX(-50%);
-    }
-    75% {
-      transform: translateX(-75%);
-    }
-    95% {
-      transform: translateX(-75%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  } */
+  .container {
+    display: flex;
+    overflow: hidden; 
+    flex-direction: column;/* hide any content that overflows the container */
+  }
+  }
   
   

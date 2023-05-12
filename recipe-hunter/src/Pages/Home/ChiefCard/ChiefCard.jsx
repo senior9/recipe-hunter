@@ -16,7 +16,7 @@ const ChiefCard = (singleChief) => {
 
   return (
 
-    <Col xs={6}  md={6} className=" d-flex   m-5  " >
+    <Col xs={6}  md={6} className="chief-card w-100   m-5  " >
     <Card className="m-5 w-100 ">
     <Suspense fallback={<div>Loading...</div>}>
           <LazyImage className=" w-100" src={pictureUrl} alt={chefName} />

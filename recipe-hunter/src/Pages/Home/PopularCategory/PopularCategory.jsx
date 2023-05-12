@@ -9,9 +9,9 @@ const PopularCategory = () => {
 
     return (
       <div className='bg-warning py-3'>  
-        <div className="container">
+        <div className="container ">
         <h1 className='text-white text-center my-auto'>Popular Category </h1>
-        <div className='container'>
+        <div className='container category gap-3 mt-3'>
         <div className="box"> 
         <img src={image1} alt="" />
         

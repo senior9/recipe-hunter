@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import footerLogo from "../../assets/Logo/logo-5.png";
 import { FaFacebook, FaGoogle, FaLinkedin } from "react-icons/fa";
+import "./Footer.css"
 
 const Footer = () => {
   return (

@@ -11,7 +11,6 @@ const Main = () => {
         <div>
             <Header></Header>
           <Banner></Banner>
-         
           <Outlet></Outlet>
           <PopularCategory></PopularCategory>
             <Footer></Footer>

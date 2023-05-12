@@ -5,3 +5,17 @@
     font-weight: 600;
 
 }
+.card-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .card-item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
