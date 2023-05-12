@@ -9,8 +9,9 @@ const Footer = () => {
     <div className="">
       <div>
         <div className="mt-5 pt-5 pb-5 footer bg-light">
-          <div className="container">
-            <div className="row">
+          <div className=""> 
+          <div className="container custom-footer">
+            <div className="row ">
               <div className="col-lg-5 col-xs-12 about-company">
                 <img src={footerLogo} alt="" />
                 <p className="pr-5 text-dark-50">
@@ -29,47 +30,48 @@ const Footer = () => {
 
               </div>
               <div className="col-lg-3 col-xs-12 links">
-                <h4 className="mt-lg-0 mt-sm-3">Links</h4>
+                <h4 className="mt-lg-0 mt-sm-3">Support</h4>
                 <ul className="m-0 p-0">
                   <li>
-                    - <a href="#">Lorem ipsum</a>
+                    - <Link> Account </Link>
                   </li>
                   <li>
-                    - <a href="#">Nam mauris velit</a>
+                    - <a href="#">Support Center</a>
                   </li>
                   <li>
-                    - <a href="#">Etiam vitae mauris</a>
+                    - <a href="#">Feedback</a>
                   </li>
                   <li>
-                    - <a href="#">Fusce scelerisque</a>
+                    - <a href="#">Contact Us</a>
                   </li>
                   <li>
-                    - <a href="#">Sed faucibus</a>
+                    - <a href="#">Blog</a>
                   </li>
                   <li>
-                    - <a href="#">Mauris efficitur nulla</a>
+                    - <a href="#">FAQ</a>
                   </li>
                 </ul>
               </div>
               <div className="col-lg-4 col-xs-12 location">
                 <h4 className="mt-lg-0 mt-sm-4">Location</h4>
-                <p>22, Lorem ipsum dolor, consectetur adipiscing</p>
+                <p>22, Bangladesh, Gulshan </p>
                 <p className="mb-0">
                   <i className="fa fa-phone mr-3"></i>(541) 754-3010
                 </p>
                 <p>
-                  <i className="fa fa-envelope-o mr-3"></i>info@hsdf.com
+                  <i className="fa fa-envelope-o mr-3"></i>recipehunter@.com
                 </p>
               </div>
             </div>
+          </div>
           </div>
         </div>
 
         {/*  */}
         {/* <hr className="bg-light" /> */}
        <div className="bg-dark">
-       <footer className="container footer d-flex justify-content-between py-2">
-          <div>
+       <footer className="container custom-footer  py-2">
+          <div className="d-flex justify-content-center">
             <Link
               className=" text-decoration-none text-primary text-white"
               to="/"
@@ -78,7 +80,7 @@ const Footer = () => {
             </Link>
             <span className="text-white">&copy; 2022 SEnior.</span>
           </div>
-          <div>
+          <div className="d-flex justify-content-center">
             <span className="text-white">Powered by</span>
             <Link
               className="text-decoration-none text-primary text-white"
